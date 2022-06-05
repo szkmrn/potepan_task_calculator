@@ -2,46 +2,53 @@ let display = document.getElementById("display")
 let button = document.getElementsByClassName("button")
 //let numeralButton = document.getElementsByClassName("numeral")
 
-
 function clickButton(button){
    // let result = display.innerHTML;
     let number = button.innerHTML;
-    //let numeral = numeralButton,innerHTML;
+    let maxLength = 17;
     
     if (number === "AC"){
         display.innerHTML = "0";
-    }else if (number === "="){number
-        display.innerHTML = eval(display.innerHTML)
+    }else if (number === "="){
+        display.innerHTML = eval(display.innerHTML);
+             if(display.innerHTML >= maxLength){
+                display.innerHTML = display.innerHTML.substr(0,maxLength);
+             }
     }else{
         if (display.innerHTML === "0"){
             if(number === "0" || number ==="00"){
-                display.innerHTML = "0"
+                display.innerHTML = "0";
             }else if(number === "+" || number === "-" || number === "."){
-                display.innerHTML = "0" + number
+                display.innerHTML = "0" + number;
             }else if(number === "×"){
                 number ="*";
-                display.innerHTML = "0" + number
+                display.innerHTML = "0" + number;
             }else if(number === "÷"){
                 number ="/";
-                display.innerHTML = "0" + number
+                display.innerHTML = "0" + number;
             }else{    
                 display.innerHTML = number;
             }    
         
         }else if(display.innerHTML.substr(-1,1) === "+" || display.innerHTML.substr(-1,1) === "-" || display.innerHTML.substr(-1,1) === "*" || display.innerHTML.substr(-1,1) === "/"){
             if(number === "00" || number === "+" || number === "-" || number === "×" || number === "÷" || number === "."){
-                display.innerHTML += ''
+                display.innerHTML += '';
             }else{
-                display.innerHTML += number   
+                display.innerHTML += number;   
             } 
-        //display表示が”数字＋０になった時に0が連続で表記される
-        }else if(display.innerHTML.substr(-1,2) == "+0"){//display.innerHTMLの右から２つの文字が"符号0"の時
+        
+       // }else if(display.innerHTML.substr(-1,2) == "+"+"0"){
+        }else if(display.innerHTML.slice(-2) === "+0" || display.innerHTML.slice(-2) === "-0" || display.innerHTML.slice(-2) === "*0" || display.innerHTML.slice(-2) === "/0" ){ 
             if(number === "." || number === "+" || number === "-" || number === "*" || number === "/"){
-                display.innerHTML += number//符号や小数点の場合は続けて表示
+                display.innerHTML += number;
             }else{
-                display.innerHTML += ''//符号や小数点以外の場合は表示されない
+                display.innerHTML += '';
             }
-                  
+    
+        
+        
+       // }else if(display.innerHTML.length === 17) {
+         //       display.innerHTML += '';
         }else{
              if(number === "×"){
                number ="*";
