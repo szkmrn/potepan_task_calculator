@@ -1,9 +1,7 @@
 let display = document.getElementById("display")
 let button = document.getElementsByClassName("button")
-//let numeralButton = document.getElementsByClassName("numeral")
 
 function clickButton(button){
-   // let result = display.innerHTML;
     let number = button.innerHTML;
     let maxLength = 17;
     
@@ -37,9 +35,15 @@ function clickButton(button){
                 display.innerHTML += number;   
             } 
         
-       // }else if(display.innerHTML.substr(-1,2) == "+"+"0"){
+       
         }else if(display.innerHTML.slice(-2) === "+0" || display.innerHTML.slice(-2) === "-0" || display.innerHTML.slice(-2) === "*0" || display.innerHTML.slice(-2) === "/0" ){ 
-            if(number === "." || number === "+" || number === "-" || number === "*" || number === "/"){
+            if(number === "." || number === "+" || number === "-" ){
+                display.innerHTML += number;
+            }else if(number === "×"){
+                number ="*";
+                display.innerHTML += number;
+            }else if(number === "÷"){
+                number ="/";
                 display.innerHTML += number;
             }else{
                 display.innerHTML += '';
@@ -47,8 +51,8 @@ function clickButton(button){
     
         
         
-       // }else if(display.innerHTML.length === 17) {
-         //       display.innerHTML += '';
+        }else if(display.innerHTML.length === 17) {
+                display.innerHTML += '';
         }else{
              if(number === "×"){
                number ="*";
