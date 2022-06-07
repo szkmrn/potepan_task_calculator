@@ -36,7 +36,7 @@ function clickButton(button){
             } 
         
         }else if(display.innerHTML.substr(-1,1 ) === "."){
-            if(number==="."){
+            if(number==="." || number === "+" || number === "-" || number === "×" || number === "÷"){
                 display.innerHTML += "";
             }else{
                 display.innerHTML += number;
