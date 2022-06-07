@@ -35,7 +35,14 @@ function clickButton(button){
                 display.innerHTML += number;   
             } 
         
-       
+        }else if(display.innerHTML.substr(-1,1 ) === "."){
+            if(number==="."){
+                display.innerHTML += "";
+            }else{
+                display.innerHTML += number;
+            }
+            
+        
         }else if(display.innerHTML.slice(-2) === "+0" || display.innerHTML.slice(-2) === "-0" || display.innerHTML.slice(-2) === "*0" || display.innerHTML.slice(-2) === "/0" ){ 
             if(number === "." || number === "+" || number === "-" ){
                 display.innerHTML += number;
